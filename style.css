@@ -1,0 +1,240 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100vw;
+    min-height: 100vh;
+    background: #1D1E22;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* اسکرول بار کاستوم */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+/* بک گراند اسکرول بار */
+::-webkit-scrollbar-track {
+    background: #797979;
+    border-radius: 20px;
+}
+
+/* بخشی که حرکت میکنه */
+::-webkit-scrollbar-thumb {
+    background: rgb(51, 51, 51);
+    border-radius: 20px;
+}
+
+.loading-box {
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #F0F8FF;
+    border-radius: 12px;
+    background-color: #1D1E22;
+    box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
+    animation: identifier ease 5s forwards;
+}
+
+@keyframes identifier {
+    80% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0);
+        display: none;
+    }
+}
+
+.loading-title {
+    font-size: 1.5em;
+    transform: translateY(-12px);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 300;
+}
+
+.loading-circle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 180px;
+    background: conic-gradient(from 0deg at 50% 50%, rgb(231, 189, 0) 0%, rgb(231, 131, 0) 0%, #101012 0%);
+    border-radius: 100px;
+    box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.75), -4px -4px 16px rgba(255, 255, 255, 0.1);
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-count {
+    content: ' ';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 3px;
+    left: 3px;
+    width: 174px;
+    height: 174px;
+    border-radius: 100px;
+    background: #1D1E22;
+    box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.75) inset, -4px -4px 16px rgba(255, 255, 255, 0.1) inset;
+    animation: spin 1s infinite linear reverse;
+}
+
+.loading-count #loadingNumber {
+    font-size: 4em;
+}
+
+
+
+/* ----------------------------------- */
+
+
+
+.input-box {
+    position: relative;
+    height: 53px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #1D1E22;
+    box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
+    max-width: 350px;
+}
+
+input {
+    position: relative;
+    outline: none;
+    border: none;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgb(231, 189, 0);
+    background-color: #1D1E22;
+    padding: 0 15px 0 65px;
+}
+
+.icon {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    color: rgb(231, 189, 0);
+    background-color: #1D1E22;
+    font-size: 35px;
+}
+
+
+/* ------------------------ */
+.show {
+    background-color: #1D1E22;
+    box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    max-width: 300px;
+    height: 465px;
+    border-radius: 10px;
+    overflow-y: auto;
+    margin-bottom: 50px;
+}
+
+.show h5 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.show .user {
+    direction: ltr;
+    display: flex;
+    padding: 8px;
+    border-bottom: 1px solid #444;
+}
+
+.show .user:hover {
+    background-color: rgb(231, 189, 0);
+    border-radius: 10px;
+    color: #000;
+}
+
+.show .user-info {
+    width: 95%;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.show .user-info-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+
+.content {
+    max-width: 380px;
+    height: 465px;
+    margin-bottom: 50px;
+}
+
+
+
+.content .user {
+    direction: ltr;
+    display: flex;
+    padding: 8px;
+    background-color: rgb(231, 189, 0);
+    border-radius: 10px;
+    color: #000;
+}
+
+.content .user-info {
+    width: 95%;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content .user-info-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content .user-info-tow {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+
+}
