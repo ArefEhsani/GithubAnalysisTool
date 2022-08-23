@@ -1,3 +1,4 @@
+/* rest */
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +6,7 @@
     font-family: "Poppins", sans-serif;
 }
 
+/* استایل کلی */
 body {
     overflow-x: hidden;
     width: 100vw;
@@ -27,8 +29,6 @@ body {
     }
 }
 
-
-
 /* اسکرول بار کاستوم */
 ::-webkit-scrollbar {
     width: 5px;
@@ -47,6 +47,7 @@ body {
     border-radius: 20px;
 }
 
+/* لودینگ */
 .loading-box {
     z-index: 10;
     position: absolute;
@@ -125,11 +126,7 @@ body {
     font-size: 4em;
 }
 
-
-
-/* ----------------------------------- */
-
-
+/* سرچ باکس */
 
 .input-box {
     position: relative;
@@ -169,8 +166,7 @@ input {
     font-size: 35px;
 }
 
-
-/* ------------------------ */
+/* باکس هالی فالورا و فالو بک نداده ها */
 .show {
     background-color: #1D1E22;
     box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05);
@@ -200,6 +196,14 @@ input {
     color: #000;
 }
 
+.show .user a {
+    color: rgb(231, 189, 0);
+}
+
+.show .user:hover a {
+    color: rgb(0, 119, 255);
+}
+
 .show .user-info {
     width: 95%;
     padding: 0 10px;
@@ -213,17 +217,12 @@ input {
     justify-content: space-between;
 }
 
-
-
-
-
+/* محتوای اصلی */
 .content {
     max-width: 380px;
     height: 465px;
     margin-bottom: 50px;
 }
-
-
 
 .content .user {
     direction: ltr;
