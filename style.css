@@ -14,7 +14,20 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: time ease 2s 4s forwards;
 }
+
+@keyframes time {
+    0% {
+        transform: translateX(500px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
 
 /* اسکرول بار کاستوم */
 ::-webkit-scrollbar {
@@ -37,8 +50,9 @@ body {
 .loading-box {
     z-index: 10;
     position: absolute;
+    top: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
