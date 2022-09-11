@@ -11,34 +11,32 @@
 // }
 
 
-let username = "afsharsharifi"
-
-
-
-fetch(`https://api.github.com/users/${username}`).then(response => {
-    return response.json()
-}).then(data => {
-    document.getElementById("github-id").innerHTML = data.id
-    document.getElementById("avatar").src = data.avatar_url
-    document.getElementById("profile-url").href = data.html_url
-    document.getElementById("github-name").innerHTML = data.name
-    paginatedFetch(`https://api.github.com/users/${username}/followers`).then(function(response) {
-        document.getElementById("followers-count").innerHTML = response.length
+function setUserProfile(username) {
+    fetch(`https://api.github.com/users/${username}`).then(response => {
+        return response.json()
+    }).then(data => {
+        document.getElementById("github-id").innerHTML = data.id
+        document.getElementById("avatar").src = data.avatar_url
+        document.getElementById("profile-url").href = data.html_url
+        document.getElementById("github-name").innerHTML = data.name
+        paginatedFetch(`https://api.github.com/users/${username}/followers`).then(function(response) {
+            document.getElementById("followers-count").innerHTML = response.length
+        })
+        paginatedFetch(`https://api.github.com/users/${username}/following`).then(function(response) {
+            document.getElementById("following-count").innerHTML = response.length
+        })
+        paginatedFetch(`https://api.github.com/users/${username}/starred`).then(function(response) {
+            document.getElementById("stars-count").innerHTML = response.length
+        })
+        getUserRepositories(username).then(function(response) {
+            document.getElementById("repositories-count").innerHTML = response.length
+        });
+        document.getElementById("register-date").innerHTML = new Date(data.created_at).toDateString()
+        document.getElementById("last-update").innerHTML = new Date(data.updated_at).toDateString()
+        document.getElementById("github-bio").innerHTML = data.bio
+        document.getElementById("location").innerHTML = data.location
     })
-    paginatedFetch(`https://api.github.com/users/${username}/following`).then(function(response) {
-        document.getElementById("following-count").innerHTML = response.length
-    })
-    paginatedFetch(`https://api.github.com/users/${username}/starred`).then(function(response) {
-        document.getElementById("stars-count").innerHTML = response.length
-    })
-    paginatedFetch(`https://api.github.com/users/${username}/repo`).then(function(response) {
-        document.getElementById("repositories-count").innerHTML = response.length
-    })
-    document.getElementById("register-date").innerHTML = new Date(data.created_at).toDateString()
-    document.getElementById("last-update").innerHTML = new Date(data.updated_at).toDateString()
-    document.getElementById("github-bio").innerHTML = data.bio
-    document.getElementById("location").innerHTML = data.location
-})
+}
 
 
 async function getUserFollowers(username) {
@@ -64,19 +62,53 @@ listOfFollowers = new Array();
 listOfFollowings = new Array();
 
 // Unfollowers
-getUserFollowers(username).then(function(followers) {
-    getUserFollowings(username).then(function(followings) {
-        console.log(getDifference(followings, followers));
+function setUserUnfollowers(username) {
+    getUserFollowers(username).then(function(followers) {
+        getUserFollowings(username).then(function(followings) {
+            let unfollowers = getDifference(followings, followers)
+            document.getElementById("listUnfollowers").innerHTML = ""
+            for (let index = 0; index < unfollowers.length; index++) {
+                const element = unfollowers[index];
+                document.getElementById("listUnfollowers").innerHTML += `
+                <div class="user">
+                    <img class="rounded-circle" src="${element.avatar_url}" alt="image profile" width="50px">
+                    <div class="user-info">
+                        <div class="user-info-header">
+                            <span>${element.login}</span> <span>${element.id}</span>
+                        </div>
+                        <a href="${element.html_url}">Open Profile</a>
+                    </div>
+                </div>
+                `
+            }
+        });
     });
-});
+}
 
 
 // Don't Follow Back
-getUserFollowers(username).then(function(followers) {
-    getUserFollowings(username).then(function(followings) {
-        console.log(getDifference(followers, followings));
+function setUserDontFollowBack(username) {
+    getUserFollowers(username).then(function(followers) {
+        getUserFollowings(username).then(function(followings) {
+            let dontfollowback = getDifference(followers, followings)
+            document.getElementById("listDontFollowBack").innerHTML = ""
+            for (let index = 0; index < dontfollowback.length; index++) {
+                const element = dontfollowback[index];
+                document.getElementById("listDontFollowBack").innerHTML += `
+                <div class="user">
+                    <img class="rounded-circle" src="${element.avatar_url}" alt="image profile" width="50px">
+                    <div class="user-info">
+                        <div class="user-info-header">
+                            <span>${element.login}</span> <span>${element.id}</span>
+                        </div>
+                        <a href="${element.html_url}">Open Profile</a>
+                    </div>
+                </div>
+                `
+            }
+        });
     });
-});
+}
 
 function getDifference(array1, array2) {
     return array1.filter(object1 => {
@@ -97,3 +129,20 @@ function paginatedFetch(url, page = 1, previousResponse = []) {
         return response;
     })
 }
+
+
+function searchForUser(username) {
+    setUserProfile(username)
+    setUserUnfollowers(username)
+    setUserDontFollowBack(username)
+}
+
+searchForUser("ArefEhsani")
+
+document.getElementById("search-box").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        valueInput = document.getElementById("search-box").value
+        searchForUser(valueInput)
+    }
+})
