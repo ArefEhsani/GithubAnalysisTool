@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GithubAnalysisTool</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css"
-        integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css" integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE" crossorigin="anonymous">
     <!-- style css -->
     <link rel="stylesheet" href="style.css">
 
@@ -17,12 +16,12 @@
 
 <body>
     <!-- لودینگ -->
-    <div class="loading-box">
+    <!-- <div class="loading-box">
         <p class="loading-title">Loading</p>
         <div class="loading-circle">
             <p class="loading-count"><span id="loadingNumber">0</span>%</p>
         </div>
-    </div>
+    </div> -->
     <!-- محتوا -->
     <div class="container mt-5">
         <!-- سرچ باکس -->
@@ -36,42 +35,38 @@
             <!-- محتوای اصلی -->
             <div class="content col mx-auto">
                 <div class="user">
-                    <img class="rounded-circle" src="https://picsum.photos/400" alt="image profile" width="50px"
-                        height="50px">
+                    <img id="avatar" class="rounded-circle" src="https://picsum.photos/400" alt="image profile" width="50px" height="50px">
                     <div class="user-info">
                         <div class="user-info-header">
-                            <span>Aref Ehsani</span> <span>16485674</span>
+                            <span id="github-name">Aref Ehsani</span> <span id="github-id">16485674</span>
                         </div>
-                        <a class="w-100" href="https://github.com/ArefEhsani">https://github.com/ArefEhsani</a>
+                        <a id="profile-url" class="w-100" href="https://github.com/ArefEhsani">Open Profile</a>
                         <hr>
                         <div class="user-info-tow">
-                            <span>Follower :</span> <span>5</span>
+                            <span>Follower :</span> <span id="followers-count">51</span>
                         </div>
                         <div class="user-info-tow">
-                            <span>Following :</span> <span>4</span>
+                            <span>Following :</span> <span id="following-count">41</span>
                         </div>
                         <div class="user-info-tow">
-                            <span>Stars me :</span> <span>51</span>
+                            <span>Stared :</span> <span id="stars-count">51</span>
                         </div>
                         <div class="user-info-tow">
-                            <span>Stars :</span> <span>15</span>
+                            <span>Repositories :</span> <span id="repositories-count">10</span>
                         </div>
                         <div class="user-info-tow">
-                            <span>Repositories :</span> <span>10</span>
+                            <span>Registery date :</span> <span id="register-date">2020-10-24T15:20:01Z</span>
                         </div>
                         <div class="user-info-tow">
-                            <span>Registery date :</span> <span>2020-10-24T15:20:01Z</span>
+                            <span>Last update :</span> <span id="last-update">2022-08-08T07:37:16Z</span>
                         </div>
                         <div class="user-info-tow">
-                            <span>Last update :</span> <span>2022-08-08T07:37:16Z</span>
+                            Bio :
+                            <span id="github-bio">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, recusandae!</span>
                         </div>
-                        <div class="mt-3">
-                            Bio : <br>
-                            <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, recusandae!</span>
-                        </div>
-                        <div class="mt-1">
+                        <div class="user-info-tow">
                             Location : <br>
-                            <span>Iran, Tehran</span>
+                            <span id="location">Iran, Tehran</span>
                         </div>
                     </div>
                 </div>
@@ -168,8 +163,7 @@
     </div>
 
     <!-- Bootstrap Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
     </script>
     <script src="./javascript.js"></script>
 </body>
